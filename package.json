@@ -1,0 +1,26 @@
+{
+  "name": "fast-time-input",
+  "version": "0.1.0-alpha",
+  "description": "Time input shortcuts",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njbrown/fast-time-input.git"
+  },
+  "keywords": [
+    "js",
+    "react",
+    "datetime",
+    "time",
+    "shortcut"
+  ],
+  "author": "Nicolas Brown",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/njbrown/fast-time-input/issues"
+  },
+  "homepage": "https://github.com/njbrown/fast-time-input#readme"
+}
