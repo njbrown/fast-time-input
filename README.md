@@ -26,7 +26,6 @@ Single and double digits
 1p => 1:00 PM
 12p => 12:00 PM
 13pm => 1:00 PM
-130p => 1:30 PM
 ```
 
 Triple digits
