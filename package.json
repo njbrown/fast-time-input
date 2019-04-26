@@ -1,6 +1,6 @@
 {
   "name": "fast-time-input",
-  "version": "0.1.1-alpha",
+  "version": "0.1.2-alpha",
   "description": "Time input shortcuts",
   "main": "index.js",
   "scripts": {
