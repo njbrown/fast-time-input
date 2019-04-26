@@ -1,13 +1,11 @@
 declare class Time {
-    constructor(hour: number, mins: number);
+  constructor(hour: number, mins: number);
 
-    to12Hour(): string;
-    to24Hour(): string;
+  to12Hour(): string;
+  to24Hour(): string;
 }
 
-
-declare class FastTimeInput
-{
-    parse(timeText: tring): string;
-    inputFilter(event: KeyboardEvent):boolean;
+declare class FastTimeInput {
+  parse(timeText: string): string;
+  inputFilter(event: KeyboardEvent): boolean;
 }
