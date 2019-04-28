@@ -2,9 +2,11 @@
   "name": "fast-time-input",
   "version": "0.1.2-alpha",
   "description": "Time input shortcuts",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest",
+    "build": "tsc",
+    "build-watch": "tsc --watch"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,12 @@
   "bugs": {
     "url": "https://github.com/njbrown/fast-time-input/issues"
   },
-  "homepage": "https://github.com/njbrown/fast-time-input#readme"
+  "homepage": "https://github.com/njbrown/fast-time-input#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.13.8",
+    "jest": "^24.7.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
+  }
 }
