@@ -1,12 +1,14 @@
+//import { parse } from "url";
+
 // https://stackoverflow.com/questions/2998784/how-to-output-integers-with-leading-zeros-in-javascript
-function pad(num, size) {
+function pad(num:number, size:number) {
   var s = num + "";
   while (s.length < size) s = "0" + s;
   return s;
 }
 
 // https://stackoverflow.com/questions/11409895/whats-the-most-elegant-way-to-cap-a-number-to-a-segment
-function clamp(val, min, max) {
+function clamp(val:number, min:number, max:number) {
   return Math.min(Math.max(val, min), max);
 }
 
@@ -15,7 +17,7 @@ class Time {
   hours = 0;
   mins = 0;
 
-  constructor(hr, mn) {
+  constructor(hr:number, mn:number) {
     this.hours = clamp(hr, 0, 23);
     this.mins = clamp(mn, 0, 59);
   }
@@ -35,13 +37,13 @@ class Time {
   }
 }
 
-class FastTimeInput {
+export class FastTimeInput {
 
-  parse = timeText => {
+  public static parse(timeText:string) {
     let newTime = "";
     // https://stackoverflow.com/questions/2031085/how-can-i-check-if-string-contains-characters-whitespace-not-just-whitespace
     if (/\S/.test(timeText) || timeText !== "") {
-      const t = this.convertInput(timeText);
+      const t = FastTimeInput.convertInput(timeText);
 
       newTime = t.to12Hour();
     }
@@ -71,59 +73,59 @@ class FastTimeInput {
 
   - if no p is present, AM is implied
   */
-  convertInput(timeText) {
+  private static convertInput(timeText:string) {
     var m = this.findAMPM(timeText);
 
     // strip extra characters
     timeText = timeText.replace(/\D/g, "");
     
-    if (timeText.length == 0) return new Time(0, 0, "am");
+    if (timeText.length == 0) return new Time(0, 0);
     if (timeText.length == 1 || timeText.length == 2)
       return this.convertSingleAndDouble(timeText, m);
     if (timeText.length == 3) return this.convertTriple(timeText, m);
     if (timeText.length == 4) return this.convertQuadruple(timeText, m);
 
-    return new Time(0, 0, "am");
+    return new Time(0, 0);
   }
 
-  findAMPM(timeText) {
+  private static findAMPM(timeText:string) {
     if (timeText.search("pm") !== -1 || timeText.search("p") !== -1)
       return "pm";
     return "am";
   }
 
-  convertSingleAndDouble(timeText, m) {
+  private static convertSingleAndDouble(timeText:string, m:string) {
     var value = parseInt(timeText) % 24;
     if (m === "pm" && value < 12) value += 12;
-    return new Time(value % 24, 0, m);
+    return new Time(value % 24, 0);
   }
 
   /*
   only handles time between 1:01 and 9:99
   */
-  convertTriple(timeText, m) {
+ private static convertTriple(timeText:string, m:string) {
     var hours = parseInt(timeText.substr(0, 1));
     if (m === "pm" && hours < 12) hours += 12;
 
     var mins = parseInt(timeText.substr(1, 3));
 
-    return new Time(hours, mins, m);
+    return new Time(hours, mins);
   }
 
   /*
   ignores p and a
    */
-  convertQuadruple(timeText, m) {
+  private static convertQuadruple(timeText:string, m:string) {
     var hours = parseInt(timeText.substr(0, 2));
     if (m === "pm" && hours < 12) hours += 12;
     if (m === "am" && hours > 12) hours -= 12;
     var mins = parseInt(timeText.substr(2, 5));
 
-    return new Time(hours, mins, m);
+    return new Time(hours, mins);
   }
 
   // https://stackoverflow.com/questions/8282266/how-to-prevent-invalid-characters-from-being-typed-into-input-fields
-  inputFilter(e) {
+  private static inputFilter(e:any) {
     // 0-9
     if (e.which > 47 && e.which < 58) {
       return false;
@@ -148,4 +150,9 @@ class FastTimeInput {
   }
 }
 
-export default FastTimeInput;
+export function parse(timeText:string) : string
+{
+  return FastTimeInput.parse(timeText);
+}
+
+//export default FastTimeInput;
