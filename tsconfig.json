@@ -14,5 +14,5 @@
     "dist",
     "**/*.spec.ts"
   ],
-  "files": ["index"]
+  "include": ["src/**/*"]
 }
