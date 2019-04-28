@@ -42,7 +42,7 @@ Quadruple Digits
 ### Code Demo
 
 ```js
-let fti = new FastTimeInput();
+import * as fti from "fast-time-input"
 result = fti.parse("130p");
 consle.log(result)
 ```
