@@ -32,5 +32,15 @@ test("12 am should be 00:00 am",()=>
 
 test("12 am should be 00:00 am",()=>
 {
-    expect(fti.parse("545")).toBe("05:45 PM");
+    expect(fti.parse("545p")).toBe("05:45 PM");
+});
+
+test("cap minutes to 59",()=>
+{
+    expect(fti.parse("290")).toBe("02:59 AM");
+});
+
+test("invalid characters",()=>
+{
+    expect(fti.parse("*^#H87h(@H9qp/i|w")).toBe("08:59 PM");
 });
