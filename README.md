@@ -1,12 +1,13 @@
 # Fast Time Input
 
-=======================================
+---
+
 ![npm downlaods](https://img.shields.io/npm/dm/fast-time-input.svg?style=for-the-badge)
 [![npm version](https://img.shields.io/npm/v/fast-time-input.svg?style=for-the-badge)](https://www.npmjs.com/package/fast-time-input)
 ![npm type definitions](https://img.shields.io/npm/types/fast-time-input.svg?style=for-the-badge)
 [![Renovate badge](https://img.shields.io/badge/renovate-enabled-brightgreen.svg?style=for-the-badge)](https://renovatebot.com/)
 
-=======================================
+---
 
 Shortcodes for time input
 
