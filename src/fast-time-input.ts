@@ -134,8 +134,8 @@ export class FastTimeInput {
         }
 
         // https://stackoverflow.com/questions/2353550/how-to-capture-a-backspace-on-the-onkeydown-event/2353562
-        // backspace and delete
-        if (e.which === 8 || e.which === 46) {
+        // backspace, delete and tab
+        if (e.which === 8 || e.which === 46 || e.which === 9) {
             return false;
         }
 
