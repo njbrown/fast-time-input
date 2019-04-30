@@ -38,13 +38,16 @@ class Time {
 }
 
 export class FastTimeInput {
-  public static parse(timeString: string) {
+  public static parse(timeString: string, format?: "24hr" | "12hr") {
     let newTime = "";
     // https://stackoverflow.com/questions/2031085/how-can-i-check-if-string-contains-characters-whitespace-not-just-whitespace
     if (/\S/.test(timeString) || timeString !== "") {
       const t = FastTimeInput.convertInput(timeString);
-
-      newTime = t.to12Hour();
+      if (!format || format === "12hr") {
+        newTime = t.to12Hour();
+      } else {
+        newTime = t.to24Hour();
+      }
     }
 
     return newTime;
@@ -162,8 +165,8 @@ export class FastTimeInput {
   }
 }
 
-export function parse(timeString: string): string {
-  return FastTimeInput.parse(timeString);
+export function parse(timeString: string, format?: "24hr" | "12hr"): string {
+  return FastTimeInput.parse(timeString, format);
 }
 
 export function filterInput(e: any) {

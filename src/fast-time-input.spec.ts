@@ -36,6 +36,19 @@ test("invalid characters", () => {
   expect(fti.parse("*^#H87h(@H9qp/i|w")).toBe("08:59 PM");
 });
 
-test("parsing 24 hour time", () => {
+test("24 hour time parse to 12 hour format", () => {
   expect(fti.parse("17:00")).toBe("05:00 PM");
+});
+
+describe("Parse with format param 24hr", () => {
+  test("17p should parse to 17:00", () => {
+    expect(fti.parse("17p", "24hr")).toBe("17:00");
+  });
+  test("5p should parse to 17:00", () => {
+    expect(fti.parse("5p", "24hr")).toBe("17:00");
+  });
+
+  test("530p should parse to 17:30", () => {
+    expect(fti.parse("530p", "24hr")).toBe("17:30");
+  });
 });
