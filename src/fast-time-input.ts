@@ -1,19 +1,19 @@
 //import { parse } from "url";
 
 // https://stackoverflow.com/questions/2998784/how-to-output-integers-with-leading-zeros-in-javascript
-function pad(num: number, size: number) {
+export function pad(num: number, size: number) {
     var s = num + "";
     while (s.length < size) s = "0" + s;
     return s;
 }
 
 // https://stackoverflow.com/questions/11409895/whats-the-most-elegant-way-to-cap-a-number-to-a-segment
-function clamp(val: number, min: number, max: number) {
+export function clamp(val: number, min: number, max: number) {
     return Math.min(Math.max(val, min), max);
 }
 
 // time data in 24 hours
-class Time {
+export class Time {
     hours = 0;
     mins = 0;
 
@@ -75,7 +75,7 @@ export class FastTimeInput {
 
   - if no p is present, AM is implied
   */
-    private static convertInput(timeString: string) {
+    public static convertInput(timeString: string) {
         var meridian = this.findMeridian(timeString);
 
         // strip extra characters
@@ -90,13 +90,13 @@ export class FastTimeInput {
     }
 
     // returns am, pm or an empty string if neither is found
-    private static findMeridian(timeString: string): "am" | "pm" | null {
+    public static findMeridian(timeString: string): "am" | "pm" | null {
         if (timeString.search("pm") !== -1 || timeString.search("p") !== -1) return "pm";
         if (timeString.search("am") !== -1 || timeString.search("a") !== -1) return "am";
         return null;
     }
 
-    private static convertSingleAndDouble(timeString: string, meridian: "am" | "pm" | null) {
+    public static convertSingleAndDouble(timeString: string, meridian: "am" | "pm" | null) {
         var value = parseInt(timeString) % 24;
         if (meridian === "pm" && value < 12) value += 12;
         return new Time(value % 24, 0);
@@ -105,7 +105,7 @@ export class FastTimeInput {
     /*
   only handles time between 1:01 and 9:99
   */
-    private static convertTriple(timeString: string, meridian: "am" | "pm" | null) {
+    public static convertTriple(timeString: string, meridian: "am" | "pm" | null) {
         var hours = parseInt(timeString.substr(0, 1));
         if (meridian === "pm" && hours < 12) hours += 12;
 
@@ -117,7 +117,7 @@ export class FastTimeInput {
     /*
   ignores p and a
    */
-    private static convertQuadruple(timeString: string, meridian: "am" | "pm" | null) {
+    public static convertQuadruple(timeString: string, meridian: "am" | "pm" | null) {
         var hours = parseInt(timeString.substr(0, 2));
         if (meridian === "pm" && hours < 12) hours += 12;
         if (meridian === "am" && hours > 12) hours -= 12;
