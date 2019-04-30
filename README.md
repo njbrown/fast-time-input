@@ -17,9 +17,9 @@ Save time inputting dates by writing shortcut values and have them converted to 
 
 ### List of features
 
-- Converts shortcode times to time strings
-- Displays time in 12 and 24 hours
-- Specify AM `a` or `am` or PM using `p` or `pm`, defaults to AM e.g. `545p => 05:45 PM` and `220a => 2:20a`
+-   Converts shortcode times to time strings
+-   Displays time in 12 and 24 hours
+-   Specify AM `a` or `am` or PM using `p` or `pm`, defaults to AM e.g. `545p => 05:45 PM` and `220a => 2:20a`
 
 ### Installation
 
@@ -60,12 +60,10 @@ Quadruple Digits
 ### Code Demo
 
 ```js
-import * as fti from "fast-time-input";
-result = fti.parse("130p");
-consle.log(result);
+import { parse } "fast-time-input";
+result = parse("130p");
+consle.log(result); // => prints "01:30 PM"
 ```
-
-prints "01:30 PM"
 
 ### Contributing
 
