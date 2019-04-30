@@ -128,6 +128,8 @@ export class FastTimeInput {
 
     // https://stackoverflow.com/questions/8282266/how-to-prevent-invalid-characters-from-being-typed-into-input-fields
     public static inputFilter(e: any) {
+        const inputLength = e.target.value.length;
+
         // 0-9
         if (e.which > 47 && e.which < 58) {
             return false;
@@ -141,10 +143,14 @@ export class FastTimeInput {
 
         let key = e.key.toUpperCase();
         // AMP
-        if (key === "A" || key === "P" || key === "M") return false;
+        /* ensures that the first charater in the input box can not be any of the allowed letters */
+        if ((inputLength > 0 && key === "A") || (inputLength > 0 && key === "P") || (inputLength > 0 && key === "M")) {
+            return false;
+        }
 
         // colon :
-        if (e.key === ":") {
+        /* ensures that the first charater in the input box can not be a colon */
+        if (inputLength > 0 && e.key === ":") {
             return false;
         }
 
