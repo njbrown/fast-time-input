@@ -23,8 +23,8 @@ Save time inputting dates by writing shortcut values and have them converted to 
 
 ### Installation
 
-```shell
-$ npm i fast-time-input
+```shell 
+$ npm install --save fast-time-input
 ```
 
 ### Examples Conversions
