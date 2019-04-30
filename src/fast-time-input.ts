@@ -88,10 +88,13 @@ export class FastTimeInput {
     return new Time(0, 0);
   }
 
+  // returns am, pm or an empty string if neither is found
   private static findAMPM(timeText:string) {
     if (timeText.search("pm") !== -1 || timeText.search("p") !== -1)
       return "pm";
-    return "am";
+      if (timeText.search("am") !== -1 || timeText.search("a") !== -1)
+      return "am";
+    return "";
   }
 
   private static convertSingleAndDouble(timeText:string, m:string) {
@@ -125,7 +128,7 @@ export class FastTimeInput {
   }
 
   // https://stackoverflow.com/questions/8282266/how-to-prevent-invalid-characters-from-being-typed-into-input-fields
-  private static inputFilter(e:any) {
+  public static inputFilter(e:any) {
     // 0-9
     if (e.which > 47 && e.which < 58) {
       return false;
@@ -153,6 +156,11 @@ export class FastTimeInput {
 export function parse(timeText:string) : string
 {
   return FastTimeInput.parse(timeText);
+}
+
+export function filterInput(e:any)
+{
+  return FastTimeInput.inputFilter(e);
 }
 
 //export default FastTimeInput;

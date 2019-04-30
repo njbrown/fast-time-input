@@ -27,7 +27,7 @@ test("12 by default should be 12::00 PM",()=>
 
 test("12 am should be 00:00 am",()=>
 {
-    expect(fti.parse("12a")).toBe("00:00 PM");
+    expect(fti.parse("12a")).toBe("00:00 AM");
 });
 
 test("12 am should be 00:00 am",()=>
@@ -43,4 +43,9 @@ test("cap minutes to 59",()=>
 test("invalid characters",()=>
 {
     expect(fti.parse("*^#H87h(@H9qp/i|w")).toBe("08:59 PM");
+});
+
+test("parsing 24 hour time",()=>
+{
+    expect(fti.parse("17:00")).toBe("05:00 PM");
 });
