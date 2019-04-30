@@ -1,11 +1,12 @@
 {
   "name": "fast-time-input",
-  "version": "0.1.3-alpha",
+  "version": "0.1.6-alpha",
   "description": "Time input shortcuts",
   "main": "./dist/index.js",
   "scripts": {
     "test": "jest",
     "build": "tsc",
+    "prepublishOnly": "npm run build",
     "build-watch": "tsc --watch"
   },
   "repository": {
@@ -17,7 +18,8 @@
     "react",
     "datetime",
     "time",
-    "shortcut"
+    "shortcut",
+    "typescript"
   ],
   "author": "Nicolas Brown",
   "license": "MIT",
