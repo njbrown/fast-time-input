@@ -1,1 +1,1 @@
-export * from "./fast-time-input";
+export { parse, filterInput } from "./fast-time-input";
