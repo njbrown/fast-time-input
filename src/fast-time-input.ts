@@ -25,10 +25,12 @@ export class Time {
     to12Hour() {
         let hours = this.hours;
         let mer = "AM";
-        if (hours > 12) {
+        if (hours >= 12) {
             hours -= 12;
             mer = "PM";
         }
+        if(hours==0) hours = 12;
+
         return pad(hours, 2) + ":" + pad(this.mins, 2) + " " + mer.toUpperCase();
     }
 
@@ -91,6 +93,7 @@ export class FastTimeInput {
 
     // returns am, pm or an empty string if neither is found
     public static findMeridian(timeString: string): "am" | "pm" | null {
+        timeString = timeString.toLowerCase();
         if (timeString.search("pm") !== -1 || timeString.search("p") !== -1) return "pm";
         if (timeString.search("am") !== -1 || timeString.search("a") !== -1) return "am";
         return null;
@@ -99,6 +102,7 @@ export class FastTimeInput {
     public static convertSingleAndDouble(timeString: string, meridian: "am" | "pm" | null) {
         var value = parseInt(timeString) % 24;
         if (meridian === "pm" && value < 12) value += 12;
+        if (meridian === "am" && value >= 12) value -= 12;
         return new Time(value % 24, 0);
     }
 
@@ -120,7 +124,7 @@ export class FastTimeInput {
     public static convertQuadruple(timeString: string, meridian: "am" | "pm" | null) {
         var hours = parseInt(timeString.substr(0, 2));
         if (meridian === "pm" && hours < 12) hours += 12;
-        if (meridian === "am" && hours > 12) hours -= 12;
+        if (meridian === "am" && hours >= 12) hours -= 12;
         var mins = parseInt(timeString.substr(2, 5));
 
         return new Time(hours, mins);
