@@ -111,7 +111,7 @@ export class FastTimeInput {
   */
     public static convertTriple(timeString: string, meridian: "am" | "pm" | null) {
         var hours = parseInt(timeString.substr(0, 1));
-        if (meridian === "pm" && hours < 12) hours += 12;
+        if (meridian === "pm") hours += 12;
 
         var mins = parseInt(timeString.substr(1, 3));
 
