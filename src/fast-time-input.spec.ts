@@ -73,7 +73,17 @@ describe("Parse 24 hour single and double shortcut format for all hours of the d
     for( let i = 0; i < 24;i++) {
         const time = pad(i,2)+":00";
         const shortcode = i+"";
-        test(time+" should parse to "+time, () => {
+        test(shortcode+" should parse to "+time, () => {
+            expect(parse(shortcode, "24hr")).toBe(time);
+        });
+    }
+});
+
+describe("Parse 24 hour triple and quadruple shortcut format for all hours of the day (24hr output)", () => {
+    for( let i = 0; i < 24;i++) {
+        const time = pad(i,2)+":30";
+        const shortcode = i+"30";
+        test(shortcode+" should parse to "+time, () => {
             expect(parse(shortcode, "24hr")).toBe(time);
         });
     }
@@ -90,11 +100,31 @@ describe("Parse shortcode single and double with 'p' for all hours of the day (2
     }
 });
 
+describe("Parse shortcode triple and quadruple with 'p' for all hours of the day (24hr output)", () => {
+    for( let i = 0; i < 24;i++) {
+        const time = pad((i%12)+12,2)+":30";
+        const shortcode = i+"30p";
+        test(shortcode+" should parse to "+time, () => {
+            expect(parse(shortcode, "24hr")).toBe(time);
+        });
+    }
+});
+
 describe("Parse shortcode single and double with 'a' for all hours of the day (24hr output)", () => {
     for( let i = 0; i < 24;i++) {
-        const time = pad((i%12),2)+":00";
-        const shortcode = i+"a";
+        const time = pad((i % 12), 2) + ":00";
+        const shortcode = i + "a";
 
+        test(shortcode+" should parse to "+time, () => {
+            expect(parse(shortcode, "24hr")).toBe(time);
+        });
+    }
+});
+
+describe("Parse shortcode triple and quadruple with 'a' for all hours of the day (24hr output)", () => {
+    for( let i = 0; i < 24;i++) {
+        const time = pad((i % 12), 2)+":30";
+        const shortcode = i + "30a";
         test(shortcode+" should parse to "+time, () => {
             expect(parse(shortcode, "24hr")).toBe(time);
         });
