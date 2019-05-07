@@ -29,7 +29,7 @@ export class Time {
             hours -= 12;
             mer = "PM";
         }
-        if(hours==0) hours = 12;
+        if (hours == 0) hours = 12;
 
         return pad(hours, 2) + ":" + pad(this.mins, 2) + " " + mer.toUpperCase();
     }
@@ -130,15 +130,14 @@ function convertQuadruple(timeString: string, meridian: "am" | "pm" | null) {
 export function filterInput(e: any) {
     const inputLength = e.target.value.length;
 
-        // https://stackoverflow.com/questions/2353550/how-to-capture-a-backspace-on-the-onkeydown-event/2353562
-        // backspace, delete, tab and arrow keys
-        if (e.which === 8 || e.which === 46 || e.which === 9 || (e.which >= 37 && e.which <= 40)) {
-            return false;
-        }
+    // 0-9
+    if (e.which > 47 && e.which < 58) {
+        return false;
+    }
 
     // https://stackoverflow.com/questions/2353550/how-to-capture-a-backspace-on-the-onkeydown-event/2353562
-    // backspace, delete and tab
-    if (e.which === 8 || e.which === 46 || e.which === 9) {
+    // backspace, delete, tab and arrow keys
+    if (e.which === 8 || e.which === 46 || e.which === 9 || (e.which >= 37 && e.which <= 40)) {
         return false;
     }
 
