@@ -30,12 +30,12 @@
   },
   "homepage": "https://github.com/njbrown/fast-time-input#readme",
   "devDependencies": {
-    "@types/jest": "24.0.12",
+    "@types/jest": "30.0.0",
     "@types/node": "11.13.8",
-    "jest": "24.7.1",
+    "jest": "30.5.1",
     "prettier": "1.17.0",
     "pretty-quick": "1.10.0",
-    "ts-jest": "24.0.2",
+    "ts-jest": "29.4.12",
     "typescript": "3.4.5"
   }
 }
